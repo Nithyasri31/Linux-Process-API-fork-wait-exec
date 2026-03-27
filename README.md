@@ -25,62 +25,39 @@ Test the C Program for the desired output.
 
 ## C Program to create new process using Linux API system calls fork() and getpid() , getppid() and to print process ID and parent Process ID using Linux API system calls
 
-```
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>  
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <unistd.h>
 
-int main() {
+    int main() {
     int pid = fork();
 
     if (pid == 0) { 
         printf("I am child, my PID is %d\n", getpid()); 
         printf("My parent PID is: %d\n", getppid()); 
-        sleep(2); 
-    } 
-    else if (pid > 0) { 
+        sleep(2);  // Keep child alive for verification
+    } else { 
         printf("I am parent, my PID is %d\n", getpid()); 
         wait(NULL); 
-    } 
-    else {
-        printf("Fork failed!\n");
-        return 1; // Error in fork
+    }
     }
 
-    return 0;
-}
-```
+# OUTPUT:
 
 
-
-
-
-
-
-
-
-
-
-## OUTPUT
-
-<img width="405" height="191" alt="Screenshot 2025-11-10 161529" src="https://github.com/user-attachments/assets/5e7158bc-4bcf-406e-a5dc-b0bdf6254526" />
-
-
-
-
+![op1](https://github.com/user-attachments/assets/006572a4-a23f-44ca-b43c-9dade742b5fd)
 
 
 ## C Program to execute Linux system commands using Linux API system calls exec() , exit() , wait() family
 
-```
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <unistd.h>
 
-int main() {
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <unistd.h>
+
+    int main() {
     int status;
     
     printf("Running ps with execl\n");
@@ -113,12 +90,12 @@ int main() {
     
     printf("Done.\n");
     return 0;
-}
-```
+    }
 
-## OUTPUT
+# OUTPUT:
 
-<img width="665" height="275" alt="Screenshot 2025-11-10 161543" src="https://github.com/user-attachments/assets/954a96e3-c063-443f-94c4-de5bc99dc5fe" />
+
+![op2](https://github.com/user-attachments/assets/01a19c57-5276-4731-8beb-dad4b6c3ea1e)
 
 
 # RESULT:
